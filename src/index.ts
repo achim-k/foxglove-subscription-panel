@@ -1,6 +1,6 @@
-import { ExtensionContext } from "@foxglove/studio";
+import { ExtensionContext } from "@foxglove/extension";
 
-import { initSubscriptionTestPanel } from "./SubscriptionTestPanel";
+import { initSubscriptionTestPanel } from "./panel";
 
 export function activate(extensionContext: ExtensionContext): void {
   extensionContext.registerPanel({

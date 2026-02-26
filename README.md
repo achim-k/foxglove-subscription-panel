@@ -1,39 +1,29 @@
-# subscription-test-panel
+# Subscription Test Panel
 
-Simple [Foxglove Studio](https://github.com/foxglove/studio) extension panel to subscribe (and preload) topics. Primarily used for testing purposes.
+A [Foxglove](https://foxglove.dev) extension panel for subscribing to topics and monitoring message throughput.
+
+## Features
+
+- **Subscribe to topics** — toggle individual topic subscriptions via the settings sidebar. Use _Subscribe all_ / _Unsubscribe all_ actions to manage topics in bulk.
+- **Preload messages** — enable per-topic preloading to fetch the full message range via `subscribeMessageRange`, or use the global _Preload all topics_ toggle. A spinner indicates when range loading is in progress.
+- **Sortable table** — click any column header (Topic, Datatype, Received, Bytes, Preloaded) to sort ascending or descending. Long topic names and schema names are truncated with ellipsis and show a tooltip on hover.
+- **Live stats** — received message counts, human-readable byte sizes, and preloaded counts update in real-time. A footer row shows the totals. Received stats reset automatically on seek.
 
 ## Develop
 
-Extension development uses the `npm` package manager to install development dependencies and run build scripts.
-
-To install extension dependencies, run `npm` from the root of the extension package.
-
 ```sh
 npm install
+npm run build            # build the extension
+npm run lint             # lint and auto-fix
+npm run install          # install into Foxglove desktop
 ```
 
-To build and install the extension into your local Foxglove Studio desktop app, run:
-
-```sh
-npm run local-install
-```
-
-Open the `Foxglove Studio` desktop (or `ctrl-R` to refresh if it is already open). Your extension is installed and available within the app.
-
-## Package
-
-Extensions are packaged into `.foxe` files. These files contain the metadata (package.json) and the build code for the extension.
-
-Before packaging, make sure to set `name`, `publisher`, `version`, and `description` fields in _package.json_. When ready to distribute the extension, run:
+## Package & Publish
 
 ```sh
 npm run package
 ```
 
-This command will package the extension into a `.foxe` file in the local directory.
+This produces a `.foxe` file you can distribute or publish to the Foxglove marketplace.
 
-## Publish
-
-You can publish the extension for the public marketplace or privately for your organization.
-
-See documentation here: https://foxglove.dev/docs/studio/extensions/publish#packaging-your-extension
+See the [publishing docs](https://foxglove.dev/docs/studio/extensions/publish#packaging-your-extension) for details.
