@@ -121,11 +121,11 @@ export function handleSettingsAction(
     for (const { name } of availableTopics ?? []) {
       subscriptions[name] = { visible: true };
     }
-    return { panelState: { subscriptions }, resetStats: false };
+    return { panelState: { ...currentState, subscriptions }, resetStats: false };
   }
 
   if (id === "unsubscribe-all") {
-    return { panelState: { subscriptions: {} }, resetStats: true };
+    return { panelState: { ...currentState, subscriptions: {} }, resetStats: true };
   }
 
   return { panelState: currentState, resetStats: false };
